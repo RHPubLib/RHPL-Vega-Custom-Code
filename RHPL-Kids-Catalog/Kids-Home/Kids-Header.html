@@ -1,0 +1,1093 @@
+<!-------------------------------------------------------------------------HEADER----------------------------------------------------------------------------------->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<html><head><style>
+@import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+/*REMOVE BOOKSHELF*/
+app-root > app-bookshelf {
+display: none !important;
+height: 0px !important;
+visibility: invisible;
+width: 0px !important;
+}
+/*REMOVE GIRL*/
+app-monster-help-v2 {
+display: none;
+}
+.css-10ttq0 svg {
+    display: none;
+}
+/*REMOVE LOGIN*/
+.sign-in-panel {
+display: none !important;
+}
+/*REMOVE HOLD BUTTON*/
+body [data-automation-id*='place-hold-btn'] {
+display: none !important;
+}
+/*REMOVE COOKIE SCREEN*/
+/*REMOVE COOKIE BANNER*/
+body [id*='onetrust'] {
+    display: none;
+}
+body [class*='onetrust'] {
+    display: none;
+}
+app-cookie-notification {
+    display: none;
+}
+.ot-sdk-container {
+    display: none !important;
+}
+/*WHOLE SCREEN EDITS*/
+.px-0 main {
+  padding-bottom: 15vh !important;
+}
+body {
+background-color: #ffffff !important;
+}
+
+/*---SPECIFIC CODE ---*/
+#services-menu-b fa-icon {
+display: none;
+}
+.MuiBox-root.css-l1kfo7 {
+margin-bottom: -36% !important;
+}
+.css-1brwv7x, .css-u0bycj {
+    display: none;
+}
+.swiper {
+    padding-bottom: calc(5px + 1%);
+	}
+#b-back {
+	position: fixed;
+  	top: calc(100vh - 130px);
+  	left: 50px;
+  	background-color: #6f263d;
+  	padding: 10px;
+  	color: white;
+  	border-radius: 30px;
+	font-size: 22px;
+	font-weight: bold;
+	z-index: 999999;
+}
+
+#b-back a {
+	color: white;
+	text-decoration: none;
+}
+
+.MuiBox-root {
+  margin-bottom: 0px !important;
+}
+
+.kbi-series img, .kbi-subject img, .kbi-home img {
+	max-height: 45px;
+  	margin-top: -0.5rem;
+  	height: 3vw;
+  	min-height: 20px;
+	margin-right: 0.7vw;
+}
+
+.kbi-series {
+	//-background-color: #288649;
+	background-color: #2C808E;
+	color: white !important;
+	border-radius: 12px;
+}
+
+.kbi-home {
+	background-color: #006980;
+	color: white !important;
+	border-radius: 12px;
+}
+
+.kbi-subject {
+	background-color: #7543B6;
+	color: white !important;
+	border-radius: 12px;
+}
+
+#user-login-button .button-text.ng-star-inserted {
+  background-color: #B3004B;
+  color: white;
+  border-radius: 12px;
+  padding: 22px 10px;
+  display: block;
+  text-align: center;
+  font-size: 22.4px;
+  font-weight: 700;
+  margin-left: unset;
+  width: 100%;
+  }
+
+  .icon.icon-user {
+  	display:none;
+	font-family: 'icomoon' !important;
+  }
+
+  #user-login-button {
+  height: unset;
+  border-radius: unset;
+  padding: unset;
+  width:100%;
+  margin-top:-1px;
+  margin-left: unset;
+  margin-right: unset;
+  border: none;
+	}
+
+	#user-login-button:hover {
+	background: none;
+	}
+
+	#departments-menu-b, #about-menu-b, #programs-menu-b, #services-menu-b {
+	margin-top: auto;
+	margin-bottom: auto;
+	}
+/* KIDS MOBILE MENU ONLY */
+ul.MenuStyling .submenu img
+{
+  display: inline-flex;
+  max-width: 2.5rem;
+  margin-right: -25px;
+  max-height: 45px;
+  min-height: 20px;
+}
+.MenuStyling label
+{
+  margin-bottom: 0;
+}
+.MenuStyling .submenu span {
+margin-left: 58px;
+margin-right: auto;
+}
+.MenuStyling .sub-1 {
+background-color: #006980;
+cursor: pointer;
+}
+.MenuStyling .sub-2 {
+background-color: #7543B6;
+cursor: pointer;
+}
+.MenuStyling .sub-3 {
+background-color: #2C808E;
+cursor: pointer;
+}
+@media only screen and (max-width: 800px) {
+.search-bar.ng-star-inserted {
+display: none;
+}
+
+vega-login-button {
+  width: 100%;
+}
+.submenu.login-sub {
+  padding: unset;
+  width: 100%;
+  display: block;
+}
+#user-login-button .button-text.ng-star-inserted {
+border-radius: unset;
+padding: 27px 10px;
+}
+}
+/*--- GENERAL CODE ---*/
+/* Set your font here. Please note you will need the important if you intend on Vega keeping the font */
+html * {
+	font-family: "Lato", 'Lato Semibold', icomoon, 'Font Awesome 5 Free', sans-serif !important;
+}
+/* Set the base (rem) font-size */
+html {
+font-size: 16px !important;
+}
+/* This is the base font for Vega. If you want Vega to keep your font, set it here */
+.mat-typography {
+font: "Lato", sans-serif !important;
+}
+/*.rollup-tabs-content-locations::before {
+//    content: "Where is it?";
+//    font-size: 1.1rem;
+//}
+/*---- DROPDOWN CODE ----*/
+/* b-menu-row controls the menu dropdowns. Leave these settings too show the menu in three column format */
+#b-menu-row {
+	display: flex;
+	flex-direction: row;
+}
+/* This width will affect how large the columns in the menu will be
+	3 rows = 33%, 4 rows = 25%, 5 = 20%, etc.*/
+#b-menu-row .et_pb_column_1_3 {
+	width: 33%;
+}
+
+/* Change padding/margins as needed for design purposes */
+#b-menu-row .df_adh_heading .df-heading {
+	padding-bottom: 0.4rem;
+}
+
+#b-menu-row .df_adh_heading {
+	margin-bottom: 5px;
+}
+
+div#b-menu-row p {
+	padding-bottom: 0;
+}
+
+#b-menu-row .et_pb_column {
+	margin-right: 0;
+}
+
+/* quicklink-row controls the bottom image portion of the dropdown menu
+	change the width % to properly accomodate for a set number of images
+	3 images = 33%, 4 images = 25%, 5 = 20%, etc. */
+#quicklink-row .et_pb_column_1_4 {
+	margin-right: 0;
+	width: 25%;
+}
+/* Change padding/margins as needed for design purposes */
+#quicklink-row #quicklink-menu {
+	padding-right: 20px;
+	padding-left: 20px;
+}
+
+.search-bar--btn {
+    background-color: #6f263d !important;
+    border-color: #6f263d !important;
+    box-shadow: none !important;
+}
+
+#quicklink-row {
+	padding-top: 20px;
+}
+/* The color for the caption on the image cards at the bottom of the menu */
+#quicklink-menu .b-menu-content-card a {
+  color: white;
+}
+/* The background color behind the image cards */
+#quicklink-menu {
+  padding: 20px 0 45px 0;
+  background-color: #d4e6e9;
+}
+/* The lines underneath the main sub-headings */
+.df-divider-line {
+	border-top-style: solid;
+	border-top-color: #006980;
+	border-top-width: 2px;
+}
+/* The size of the image cards */
+.b-menu-card-image{
+	height: 125px;
+	width: 225px;
+	border-radius: 8px;
+  background-size: cover;
+}
+/* The base for the animation for the image card */
+.b-menu-content-card a {
+	color: white;
+	transition: ease-in 0.3s;
+	background-color: #6f263d;
+	border-radius: 8px;
+}
+/* The transition for the image card */
+.b-menu-content-card a:hover {
+	color: #6f263d !important;
+	background-color: #ffffff;
+	cursor: pointer;
+}
+/* The base options for the image cards */
+.b-menu-content-card {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    border-radius: 8px;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 20px;
+	margin-top: 7.5px;
+	margin-bottom: 7.5px;
+}
+/* The column structure for the image cards */
+  .b-menu-card-container {
+    display: flex;
+    flex-direction: row;
+		flex-wrap: wrap;
+  }
+  /* To place the image caption underneath the image */
+.b-card-cap {
+    padding: 10px 10px;
+    margin-left: auto;
+    margin-right: auto;
+	  max-width:375px;
+	  text-align:center;
+	  display: flex;
+    flex-direction: column;
+	letter-spacing: 0.01rem;
+}
+/* To set the placement of the dropdown menus, If you changed the padding on the main menu bar, please change the 'top' settings shown here to a px value */
+#about-menu-content, #program-menu-content, #service-menu-content, #collection-menu-content, #connect-menu-content {
+    visibility: hidden;
+	position: absolute;
+	top: unset;
+	background-color: #ffffff;
+	width: 1000px;
+	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+	z-index: 1;
+	opacity: 0;
+	left: -9999999px;
+	display: block;
+  }
+
+.menu-container {
+	position: relative;
+	display: block;
+}
+
+.full-height {
+    max-height: 80vh;
+}
+/* The base text for the dropdown menus */
+#about-menu-content a, #program-menu-content a, #service-menu-content a, #collection-menu-content a, #connect-menu-content a {
+	color: #006980;
+	cursor: pointer;
+	font-size: 19px;
+	font-family: "Lato Semibold", 'Lato', sans-serif !important;
+  }
+  /* The placement and animation for the dropdown menus, change the margin-left to move the menu left/right from it's dropdown position */
+.Nav-item:hover #about-menu-content, .Nav-item:active #about-menu-content{
+	transition: ease-in-out opacity 0.3s;
+	left: unset;
+	visibility: unset;
+	opacity: 1;
+	margin-left: -220px;
+	height: fit-content;
+}
+.Nav-item:hover #program-menu-content, .Nav-item:active #program-menu-content{
+	transition: ease-in-out opacity 0.3s;
+	left: unset;
+	visibility: unset;
+	opacity: 1;
+	margin-left: -350px;
+	height: fit-content;
+}
+.Nav-item:hover #service-menu-content, .Nav-item:active #service-menu-content{
+	transition: ease-in-out opacity 0.3s;
+	left: unset;
+	visibility: unset;
+	opacity: 1;
+	margin-left: -480px;
+	height: fit-content;
+}
+.Nav-item:hover #collection-menu-content, .Nav-item:active #collection-menu-content{
+	transition: ease-in-out opacity 0.3s;
+	left: unset;
+	visibility: unset;
+	opacity: 1;
+	margin-left: -550px;
+	height: fit-content;
+}
+.Nav-item:hover #connect-menu-content, .Nav-item:active #connect-menu-content{
+	transition: ease-in-out opacity 0.3s;
+	left: unset;
+	visibility: unset;
+	opacity: 1;
+	margin-left: -615px;
+	height: fit-content;
+}
+/* The dropdown sub-heading sizes and colors */
+h3.df-heading {
+  font-size: 22px !important;
+  color: #333;
+  border-bottom: 2px solid #006980;
+  padding: 20px 0px 0px 0px;
+  font-family: "Lato Semibold", 'Lato', sans-serif !important;
+  transform: scalex(1.0)scaley(1.0);
+  max-width: 264px;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+/* The sizes of the submenu containers */
+.submenu-container {
+flex: 1 1 33%;
+}
+/* The submenu font settings */
+.submenu-item {
+  font-family: "Lato Semibold", 'Lato', sans-serif !important;
+  font-weight: 600;
+  font-size: 17px;
+  padding: 10px 40px 10px 40px;
+  margin-bottom: 0px;
+}
+
+.submenu-item a {
+text-decoration: none;
+}
+/*---- SEARCH BAR CODE ----*/
+/* width of the search bar container, use this to reduce the size of the search bar */
+#b-btm-search {
+	width: 100%;
+	justify-content: flex-end;
+	display: none;
+	height: 62px;
+	padding-top: 10px;
+	//padding-right: 35px;
+	//margin-left: auto;
+}
+/* width of the bar, only change if needed */
+.lh-container {
+	display: flex;
+  width: calc(100% - 55px);
+  margin-top: auto;
+  margin-bottom: auto;
+}
+/* Design of the dropdown to the left of the search bar */
+.lh-container .lh-search_dropdown {
+	flex: 0 0 90px;
+	margin-top: 0px;
+	margin-right: -1px;
+	padding: 8px 4px 8px 10px;
+	height: 40px!important;
+	color: initial;
+}
+/* the display of the search icon to the right of the search bar */
+.lh-container .icon-wrapper {
+	display: inline-block;
+	position: relative;
+	top: 0px;
+	right: 0px;
+	height: 50px;
+    width: 50px;
+	background: #6f263d;
+	cursor: pointer;
+	border-radius: 4px;
+	margin-left: 5px;
+	box-shadow: 4px 5px 0 0 #000;
+    border: black solid 2px;
+}
+/* The animation of the search icon */
+.lh-container .icon-wrapper:hover {
+	background: #7d3c50;
+	transition: 0.3s ease;
+}
+/* The position of the icon */
+.lh-container .et-pb-icon {
+	height: 100%;
+    width: 29px;
+	position: absolute;
+	top: 8px !important;
+	right: 7px !important;
+	color: white;
+	transform: scaleX(-1);
+	transform: initial;
+	background: url(https://static.wixstatic.com/shapes/a82311_ef1a02dd2a464999928083e49b1e08ac.svg) no-repeat;
+}
+.lh-container #searchForm {
+	display: flex;
+	flex: 1 1 100%;
+	margin-left: 5px;
+	padding-right: 10px;
+}
+.lh-container #searchCatalog {
+	flex: 1 1 100%;
+	height: 50px;
+	color: rgba(22, 22, 22, 1);
+	width: 100%;
+	box-shadow: 4px 4px 0 0 #000;
+    border: black solid 2px;
+}
+.lh-container .lh-search_dropdown:focus {
+	border-color: transparent;
+}
+#searchButton {
+	display: flex;
+	padding: 0px;
+	background: transparent;
+	border: none;
+}
+/*--- BOTTOM HEADER CODE ---*/
+.et_pb_filterable_portfolio .et_pb_portfolio_filters li a {
+	color: #666;
+	padding: 10px 20px;
+	border: 2px solid transparent;
+	border-bottom-color: transparent;
+	display: block;
+	height: auto;
+	overflow: hidden;
+	margin: 0 0;
+	background-color: #fff;
+}
+.et_pb_filterable_portfolio .et_pb_portfolio_filters li a:hover {
+	background-color: transparent;
+	border-bottom-color: #006980;
+}
+/* The placement of the main menu bar, left of the search dropdown */
+.PrimaryNav {
+	list-style: none;
+	margin: 0 12px;
+	//max-width: 1080px;
+	padding: 0;
+	width: 100%;
+	display: flex;
+  	flex-flow: row;
+}
+/* The placement of each main menu object */
+.Nav-item {
+	background: ;
+	display: block;
+	float: left;
+	margin: 0;
+	padding: 0px 2px;
+	width: calc(100%/3);
+	text-align: center;
+	z-index: 20;
+	min-width: 140px;
+}
+.Nav-item:first-child {
+	border-radius: 3px 0 0 3px;
+}
+.Nav-item:last-child {
+	border-radius: 0 3px 3px 0;
+}
+/* The coloring and sizing of the main menu options */
+.Nav-item span {
+	color: #000;
+	display: block;
+	//padding-top: 20px;
+	//padding-bottom: 15px;
+	text-decoration: none;
+	font-size: 22.4px;
+	font-weight: 700;
+	letter-spacing: 0.04rem;
+	font-family: "Lato Semibold", 'Lato' !important;
+	cursor: pointer;
+	min-height: 73px;
+margin-top: auto;
+margin-bottom: auto;
+display: flex;
+align-content: center;
+align-items: center;
+justify-content: center;
+margin: auto;
+    box-shadow: 7px 7px 0 0 #000;
+    margin: 0px 1px;
+}
+.Nav-item span:hover {
+	z-index: 20;
+}
+/*---- BOTTOM MOBILE ---*/
+/* Mobility resposivness, only change if needed */
+@media screen and (max-width: 800px) {
+#b-btm-search {
+	width: 100%;
+	display: flex;
+	margin-top: auto;
+    margin-bottom: auto;
+}
+.PrimaryNav {
+	display: none;
+}
+.lh-container {
+	-display: none;
+}
+}
+/*--- TOP HEADER CODE ---*/
+/* to remove the global header forced by Vega (even after setting premium custom header) */
+.header > app-global-nav:nth-child(2) {
+    display:none;
+    }
+
+#b-head-container a:hover {
+	text-decoration: none;
+}
+/* Logo sizing, please base this on your padding and sizing of your logo */
+#tree-logo {
+	max-height: 100px;
+}
+/* changing preset vega button designs */
+button.b-vega-btn {
+	border: none;
+	padding: 10px 20px 0px 20px;
+}
+/* Logo sizing and resposiveness, please change based on your own logo */
+#b-logo {
+	padding: 10px 10px 0px 30px;
+	background: url(https://static.wixstatic.com/shapes/a82311_1a199876cdef47b9908460a610fb3f70.svg) no-repeat;
+	background-size: contain;
+	width: 90px;
+	height: 90px;
+	display: block;
+	//max-height: 42px;
+	display: block;
+	margin-left: 10px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+/* sizing of top right icon contianer */
+
+
+#lh-style {
+	display: flex;
+	justify-content: flex-end;
+	width: 100%;
+}
+/* height of the top-most header bar */
+
+#b-top-head {
+	display: flex;
+	max-height: 100px;
+}
+/* design of the questionmark box next to the login button */
+#b-qst {
+	color: #ffffff;
+	background-color: #454f5b;
+	border-radius: 99px;
+	min-width: 1.1em;
+	transform: scale(1);
+	text-align: center;
+	padding: 3px 5px;
+	margin: -5px 0;
+}
+#lh-style .fas {
+	margin-right: 5px;
+}
+
+/* Mobility Responsiveness, change only if needed */
+@media screen and (max-width: 1280px) {
+span.lh-top-bar-mobile {
+	display: none;
+}
+
+
+}
+
+
+@media screen and (max-width: 980px) {
+#b-logo-c a {
+display: block;
+max-width: 100px;
+height: 100px;
+}
+#b-logo {
+background: url(https://static.wixstatic.com/shapes/a82311_1a199876cdef47b9908460a610fb3f70.svg) no-repeat;
+background-size: contain;
+}
+#lh-style a {
+  padding: 10px 0px 10px 20px !important;
+  border: none !important;
+}
+}
+/*------------Mobile Menu Code--------------*/
+/*------ Try not to change these options, unless noted ------*/
+#menu-icon, .hamburger-menu, .MainMenu {
+	display: none;
+}
+/* The size and position of the hamburger icon */
+.hamburger-menu {
+    color: #ffffff;
+	font-size: 2.5rem;
+	padding-top: 0.7rem;
+	padding-left: 0.7rem;
+	cursor: pointer;
+	background: rgba(255,255,255,0);
+	width: 65px;
+	height: 50px;
+}
+
+#rhpl-chevron-left {
+	text-align: center;
+	opacity: 0.5;
+	padding-left: 0.938rem;
+	width: 1.5rem;
+	line-height: normal;
+	margin-top: 0.5rem;
+	color: white;
+}
+@media only screen and (max-width: 800px) {
+
+#menu-icon, .hamburger-menu {
+	display: block;
+	color: #006980;
+	position: absolute;
+    top: 21px;
+    left: 100px;
+}
+
+.MainMenu, .sub-menu-use-the-library, .sub-menu-iam, .sub-menu-community-programs, .sub-menu-connect, .sub-menu-about {
+	width: 288px;
+	height: 100%;
+
+	display: none;
+	background: #006980;
+	transition: transform 0.35s;
+	z-index: 1;
+	overflow-y: scroll;
+	overflow: -moz-scrollbars-none;
+}
+
+.MainMenu::-webkit-scrollbar, .sub-menu-use-the-library::-webkit-scrollbar, .sub-menu-iam::-webkit-scrollbar, .sub-menu-connect::-webkit-scrollbar, .sub-menu-community-programs::-webkit-scrollbar, .sub-menu-about::-webkit-scrollbar {
+	width: 0 !important;
+}
+
+#menu-icon {
+	margin: 0px;
+	width: 65px;
+	height: 65px;
+	position: absolute;
+	opacity: 0;
+	cursor: pointer;
+	left: -99999px;
+}
+
+#menu-icon:checked {
+	left: 0;
+	position: fixed;
+	width: 100vw;
+	height: 100vw;
+}
+
+#menu-icon:checked + .hamburger-menu {
+
+	position: fixed;
+	z-index: 3;
+	height: 100%;
+	width: 100%;
+	top: 0;
+}
+#menu-icon:checked + label > i {
+	color: #0069805B;
+    margin-top: 22px;
+}
+
+#subMenuHeaders {
+	color: white;
+	border-bottom: 2px solid white;
+	padding: 0.938rem;
+	padding-bottom: 0.1rem;
+	display: block;
+	width: 70%;
+	margin-left: auto;
+	margin-right: auto;
+	//text-transform: uppercase;
+	font-family: "Lato", sans-serif;
+	font-size: 22.4px;
+	font-weight: 700;
+	line-height: 20px;
+}
+
+#subMenuHeaders:hover {
+	text-decoration: none !important;
+}
+
+.mobile-menu-items {
+	display: block;
+	padding: 0.938rem;
+	padding-left: 2.5rem;
+	font-family: "Lato", sans-serif;
+	font-size: 20px;
+	font-weight: 400;
+	text-decoration: none !important;
+	color: white !important;
+}
+
+.mobile-menu-items:hover {
+	background: #2c3f48;
+}
+
+#menu-2, #menu-3, #menu-4, #menu-5, #menu-1 {
+	margin: 0px;
+	width: 100%;
+	position: relative;
+	z-index: 10;
+}
+
+#menu-2:checked, #menu-3:checked, #menu-4:checked, #menu-5:checked, #menu-1:checked {
+	position: absolute;
+	left: -350px;
+	top: 0;
+	display: none;
+}
+
+#menu-2:checked + #menu-2, #menu-5:checked + #menu-5, #menu-3:checked + #menu-3, #menu-4:checked + #menu-4, #menu-1:checked + #menu-1 {
+	width: 270px;
+}
+
+#menu-1:checked + input + label + .MainMenu > ul > li > label + .sub-menu-about, #menu-3:checked + #menu-1 + input + label + .MainMenu > ul > li > label + .sub-menu-use-the-library, #menu-4:checked + #menu-3 + #menu-1 + input + label + .MainMenu > ul > li > label + .sub-menu-iam, #menu-2:checked + #menu-4 + #menu-3 + #menu-1 + input + label + .MainMenu > ul > li > label + .sub-menu-community-programs, #menu-5:checked + #menu-2 + #menu-4 + #menu-3 + #menu-1 + input + label + .MainMenu > ul > li > label + .sub-menu-connect {
+	display: block;
+	top: 0;
+	position: absolute;
+	height: 100%;
+}
+
+#menu-2:checked + label.back, #menu-3:checked + label.back, #menu-4:checked + label.back, #menu-5:checked + label.back, #menu-1:checked + label.back {
+	height: 40px;
+	top: 0;
+	z-index: 3;
+	cursor: pointer;
+}
+
+#menu-1:checked + input + label + .MainMenu > ul > li > a, #menu-3:checked + #menu-1 + input + label + .MainMenu > ul > li > a, #menu-4:checked + #menu-3 + #menu-1 + input + label + .MainMenu > ul > li > a #menu-2:checked + #menu-4 + #menu-3 + #menu-1 + input + label + .MainMenu > ul > li > a, #menu-5:checked + #menu-2 + #menu-4 + #menu-3 + #menu-1 + input + label + .MainMenu > ul > li > a {
+	display: none;
+}
+
+.back {
+	height: 40px;
+	display: block;
+}
+
+#menu-icon:checked + .hamburger-menu + .MainMenu {
+	display: inline-block;
+	position: fixed;
+	z-index: 9;
+	top: 100px;
+}
+
+.submenu {
+	display: flex;
+	//padding: 0.5rem;
+	padding-top: 1.2rem;
+	padding-bottom: 1.2rem;
+	padding-left: 2.5rem;
+	font-family: "Lato", sans-serif;
+	font-size: 22.4px;
+	font-weight: 700;
+	line-height: 45px;
+	text-decoration: none;
+	color: white;
+}
+
+.submenu:hover, label.back:hover, .back:hover, .menuHeaders:hover {
+	background: #2c3f48;
+}
+
+.menuHeaders {
+	display: block;
+	padding: 0.5rem;
+	padding-top: 1.5rem;
+	padding-left: 2.5rem;
+
+	font-family: "Lato", sans-serif;
+	font-size: 22.4px;
+	font-weight: 700;
+	line-height: 45px;
+	text-decoration: none !important;
+	color: white !important;
+}
+
+.MenuStyling {
+	list-style-type: none !important;
+	padding: 0px;
+	margin: 0px;
+	min-height: 170vh;
+	overflow: scroll;
+}
+.MenuStyling li {
+	margin: 0px;
+}
+
+#GreenMenuItem {
+	background: #B3004B;
+	text-align: center;
+}
+
+#GreenMenuItem:hover {
+	background: #2c3f48;
+}
+}
+/*------------End of Mobile Code--------------*/
+</style>
+</head>
+<body>
+	<div id="b-head-container">
+	<div id="b-top-head">
+		<div id="b-logo-c" style="width: min-content;">
+			<a id="b-logo" href="https://mbksub-rhpl.na3.iiivega.com">
+			</a></div>
+			<div id="b-btm-search">
+		<script type="text/javascript">
+				function dropdownSearch() {
+				var dropdownSelection = document.getElementById("search").value;
+					if (dropdownSelection == "catalog") {
+          // Set placeholder value when catalog is selected
+          document.getElementById("searchCatalog").placeholder =
+            "Search Catalog...";
+				} else if (dropdownSelection == "website") {
+          // Set placeholder value when website is selected
+          document.getElementById("searchCatalog").placeholder =
+            "Search Website...";
+			} else if (dropdownSelection == "events") {
+          // Set placeholder value when website is selected
+          document.getElementById("searchCatalog").placeholder =
+            "Search Events...";
+			}
+			return false;
+		}
+      function Search() {
+        // Get dropdown selection
+        var dropdownSelection = document.getElementById("search").value;
+        if (dropdownSelection == "catalog") {
+          var form = document.getElementById("searchForm");
+          var input = document.getElementById("searchCatalog").value;
+		  var inputname = document.getElementById("searchCatalog").name;
+		  var page = "";
+          // Open in a new tab
+          // form.setAttribute("target", "_blank");
+          // Change where the query sends to
+		  if (input === "") {
+		  form.action = "https://kids.rhpl.org/";
+		  inputname = "";
+		  window.location = "https://kids.rhpl.org/";
+		  return false;
+		  } else if (input !== "") {
+		  form.action = "https://kids.rhpl.org/search";
+		  inputname = "query";
+		  }
+		  form.action = "https://kids.rhpl.org/search";
+          // On submit go to vega catalog
+          // With the text entered in the search box
+          form.onsubmit = function () {
+            /*var form = this,
+              domain = form.action,
+              searchtext = form.elements.keyword.value;
+			  location.href = "https://discover.rhpl.org/search" + "?query=" + searchtext;
+			  if (document.getElementById("searchCatalog").value.trim().length = 0) {
+		  page = "";
+		  console.log(page);
+		  form.action = "https://discover.rhpl.org/" + page;
+		  location.href = "https://discover.rhpl.org/";
+		  } else if (document.getElementById("searchCatalog").value.trim().length != 0) {
+		  page = "search" + input;
+		  console.log(page);
+		  var destination = "https://discover.rhpl.org/" + page;
+		  console.log(destination);
+		  location.href == destination;
+		  }*/
+            return false;
+          };
+        } else if (dropdownSelection == "website") {
+          var form = document.getElementById("searchForm");
+          var input = document.getElementById("searchCatalog");
+          // Go directly to the page, not in a new tab
+          form.setAttribute("target", "");
+          // Change where the query sends to
+          form.action = "https://rhpl.org/";
+          input.name = "s";
+          // On submit go to website search results
+          // With the text entered in the search box
+          form.onsubmit = function () {
+            var form = this,
+              domain = form.action,
+              searchtext = form.elements.keyword.value;
+            location.href = domain + "?s=" + searchtext;
+            return false;
+          };
+        } else if (dropdownSelection == "events") {
+          // Override the get location and instead manipulate the url to go where we want
+          var form = document.getElementById("searchForm");
+          var input = document.getElementById("searchCatalog");
+          form.setAttribute("target", "");
+          // Change where the query sends to
+          // Make sure this is where the event widget is placed
+          form.action = "https://rhpl.org/program-calendar/#/events/";
+          input.name = "keyword";
+          // On submit go to events page
+          // With the text entered as a keyword in the widget
+          form.onsubmit = function () {
+            var form = this,
+              domain = form.action,
+              searchtext = form.elements.keyword.value;
+			  location.href = domain + "?keyword=" + searchtext;
+            return false;
+          };
+        }
+      }
+</script>
+			<div class="lh-container">
+				<!--<select id="search" class="lh-search_dropdown" name="search" onchange="dropdownSearch()">
+				<option value="catalog">Catalog</option>
+				<option value="website">Website</option>
+				<option value="events">Events</option>
+				</select>-->
+				<form id="searchForm" action="https://kids.rhpl.org/search" method="get" name="entsearch" onsubmit="Search()">
+					<input id="searchCatalog" autocomplete="off" maxlength="256" name="query" placeholder="Search Catalog..." title="Search For:" type="text" value="">
+					<button id="searchButton" title="Search" type="submit">
+					<span class="icon-wrapper">
+					<i class="et-pb-icon"></i></span></button>
+					</form>
+
+			</div>
+		</div>
+				<ul class="PrimaryNav with-indicator" style="">
+			<div id="departments-menu-b" class="Nav-item">
+				<a href="https://mbkids-rhpl.na3.iiivega.com">
+					<span class="kbi-home">
+						<img src="https://static.wixstatic.com/shapes/a82311_0d602ce4c2b1491aaf0ac55b559feda5.svg">
+					 New Items
+					</span>
+			</div>
+			<div id="about-menu-b" class="Nav-item is-active">
+				<a href="https://mbksub-rhpl.na3.iiivega.com">
+					<span class="kbi-subject">
+					<img src="https://static.wixstatic.com/shapes/a82311_aebd15a546754883b3f04642ea0bddac.svg"> Subjects
+					</span>
+				</a>
+			</div>
+			<div id="programs-menu-b" class="Nav-item">
+				<a href="https://mbkser-rhpl.na3.iiivega.com">
+					<span class="kbi-series">
+					<img src="https://static.wixstatic.com/shapes/a82311_79a17928ad014e88aec80debe1933ef1.svg">
+					 Series
+					</span>
+				</a>
+			</div>
+			<div id="services-menu-b" class="Nav-item" style="display: none;">
+					<vega-login-button></vega-login-button>
+			</div>
+			<!--<div id="connect-menu-b" class="Nav-item">
+				<span>Connect</span>
+			</div>-->
+		</ul>
+	</div>
+</div>
+	</div>
+</div>
+<div class="et_pb_code_inner" style="height: 0;">
+		<!--- Mobile Menu Start --->
+		<input id="menu-5" name="menu-5" style="display: none;" type="checkbox">
+		<input id="menu-2" name="menu-2" style="display: none;" type="checkbox">
+		<input id="menu-4" name="menu-4" style="display: none;" type="checkbox">
+		<input id="menu-3" name="menu-3" style="display: none;" type="checkbox">
+		<input id="menu-1" name="menu-1" style="display: none;" type="checkbox">
+		<input id="menu-icon" name="menu-icon" type="checkbox">
+		<label class="hamburger-menu" for="menu-icon">
+		<i id="hamburger-menu" aria-hidden="true" class="fa fa-bars"></i>
+		</label>
+		<div id="MainMenu" class="MainMenu">
+			<ul class="MenuStyling">
+				<li><a href="https://kids.rhpl.org" style="text-decoration: none; color:white;"><label class="submenu sub-1"><img src="https://static.wixstatic.com/shapes/a82311_0d602ce4c2b1491aaf0ac55b559feda5.svg">
+				<span>New Items</span><i aria-hidden="true" class="fa sfa-chevron-right" style="float: right; opacity: 0.5; width: 1.5rem; line-height: normal; margin-top: 0.5rem;"></i>
+				</label></a></li>
+				<li><a href="https://kidssubject.rhpl.org/" style="text-decoration: none; color:white;"><label class="submenu sub-2"><img src="https://static.wixstatic.com/shapes/a82311_aebd15a546754883b3f04642ea0bddac.svg">
+				<span>Subjects</span><i aria-hidden="true" class="fa sfa-chevron-right" style="float: right; opacity: 0.5; width: 1.5rem; line-height: normal; margin-top: 0.5rem;"></i>
+				</label></a></li>
+				<li><a href="https://kidsseries.rhpl.org/" style="text-decoration: none; color:white;"><label class="submenu sub-3"><img src="https://static.wixstatic.com/shapes/a82311_79a17928ad014e88aec80debe1933ef1.svg">
+				<span>Series</span><i aria-hidden="true" class="fa sfa-chevron-right" style="float: right; opacity: 0.5; width: 1.5rem; line-height: normal; margin-top: 0.5rem;"></i>
+				</label></a></li>
+				<li><label class="submenu login-sub" for="menu-4" style="cursor: pointer">
+				<vega-login-button></vega-login-button><i aria-hidden="true" class="fa sfa-chevron-right" style="float: right; opacity: 0.5; width: 1.5rem; line-height: normal; margin-top: 0.5rem;"></i></label>
+				</li>
+				<!--<li><label class="submenu" for="menu-5" style="cursor: pointer">
+				Connect<i aria-hidden="true" class="fa fa-chevron-right" style="float: right; opacity: 0.5; width: 1.5rem; line-height: normal; margin-top: 0.5rem;"></i></label>
+				</li>
+				<li>
+				<a id="GreenMenuItem" class="submenu menuHeaders" href="https://catalog.rhpl.org/polaris/logon.aspx" role="link"><img />
+				Log In</a> </li>-->
+			</ul>
+		</div>
+		<!--- Mobile Menu End --->
+		</div>
+<div id="b-back">
+<a href="javascript:window.history.back();"><i class="fa-solid fa-backward" style="color: #ffffff; font-style: inherit;"></i> Back</a>
+</div>
+</body></html>

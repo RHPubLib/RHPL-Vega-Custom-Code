@@ -1,0 +1,180 @@
+<script>
+	/* Maps image filename fragments to their corresponding filtered catalog search URLs.
+	   Each entry links a homepage banner/subject image to a specific collection or material type in the catalog. */
+	const imageLinks = [
+		{ src: 'WQ2r4',       url: 'https://mbiic-rhpl.na3.iiivega.com/search?query=*&searchType=everything&pageSize=40&locationIds=15&pageNum=0&materialTypeIds=23' },
+		{ src: 'ArtsCrafts',  url: 'https://mbiic-rhpl.na3.iiivega.com/search?query=*&searchType=everything&pageSize=40&locationIds=15&pageNum=0&materialTypeIds=23&collectionIds=130' },
+		{ src: 'Electronics', url: 'https://mbiic-rhpl.na3.iiivega.com/search?query=*&searchType=everything&pageSize=40&locationIds=15&pageNum=0&materialTypeIds=23&collectionIds=131' },
+		{ src: 'Experiences', url: 'https://mbiic-rhpl.na3.iiivega.com/search?query=*&searchType=everything&pageSize=40&locationIds=15&pageNum=0&materialTypeIds=23&collectionIds=132' },
+		{ src: 'Household',   url: 'https://mbiic-rhpl.na3.iiivega.com/search?query=*&searchType=everything&pageSize=40&locationIds=15&pageNum=0&materialTypeIds=23&collectionIds=134' },
+		{ src: 'Tools',       url: 'https://mbiic-rhpl.na3.iiivega.com/search?query=*&searchType=everything&pageSize=40&locationIds=15&pageNum=0&materialTypeIds=23&collectionIds=137' },
+		{ src: 'Music',       url: 'https://mbiic-rhpl.na3.iiivega.com/search?query=*&searchType=everything&pageSize=40&locationIds=15&pageNum=0&materialTypeIds=23&collectionIds=135' },
+		{ src: 'ngHdl',       url: 'https://mbiic-rhpl.na3.iiivega.com/search?query=*&searchType=everything&pageSize=40&locationIds=15&pageNum=0&materialTypeIds=23&collectionIds=136' }
+	];
+
+	/* Scans the DOM for catalog subject images that haven't had a click listener attached yet.
+	   Uses a data attribute (data-click-bound) to track which images are already handled.
+	   When an image is clicked, navigates to its corresponding catalog search URL after a short delay
+	   to allow any Vega internal click handlers to fire first. */
+	function addClickListenerToImage() {
+		let allBound = true;
+
+		imageLinks.forEach(function({ src, url }) {
+			const img = document.querySelector('img[src*="' + src + '"]:not([data-click-bound])');
+
+			if (img) {
+				img.setAttribute('data-click-bound', 'true');
+				img.addEventListener('click', function() {
+					setTimeout(function() {
+						window.location.href = url;
+					}, 100);
+				});
+				console.log('Listener bound for: ' + src);
+			} else if (!document.querySelector('img[src*="' + src + '"]')) {
+				/* Image not yet in DOM */
+				allBound = false;
+			}
+		});
+
+		/* Once every image has a listener bound, stop the interval poll and disconnect the mutation observer */
+		if (allBound) {
+			clearInterval(poller);
+			observer.disconnect();
+			console.log('All listeners bound');
+		}
+	}
+
+	/* Polls every 500ms as a fallback to catch images that load after DOMContentLoaded
+	   (Vega lazy-renders content, so images may not be present on initial page load) */
+	const poller = setInterval(addClickListenerToImage, 500);
+
+	/* Also watches for any DOM mutations and immediately tries to bind listeners when new nodes appear */
+	const observer = new MutationObserver(function() {
+		addClickListenerToImage();
+	});
+
+	document.addEventListener('DOMContentLoaded', function() {
+		addClickListenerToImage();
+		observer.observe(document.body, {
+			childList: true,
+			subtree: true,
+			attributes: true,
+			attributeFilter: ['src']
+		});
+	});
+
+	let inactivityTimer;
+	let timerActive = false;
+
+	/* Change this to your specific URL/path */
+	const HOME_URL = '/';
+
+	/* Activates the inactivity timer on the first user interaction — only fires once per page load */
+	function startTimer() {
+		if (timerActive) return;
+		timerActive = true;
+		console.log('First interaction detected. Inactivity timer is now active.');
+		resetTimer();
+	}
+
+	/* Clears and restarts the 60-second countdown.
+	   If no interaction occurs within 60 seconds, the kiosk automatically redirects to the home page. */
+	function resetTimer() {
+		clearTimeout(inactivityTimer);
+		console.log('Inactivity timer reset. Redirecting in 60 seconds if no interaction...');
+		inactivityTimer = setTimeout(() => {
+			console.log('No interaction detected for 60 seconds. Redirecting to home page...');
+			window.location.href = HOME_URL;
+		}, 60000);
+	}
+
+	/* On the home page, the timer only activates after the first touch or click.
+	   This prevents an idle kiosk from immediately bouncing back to home before anyone has interacted with it. */
+	if (window.location.pathname === HOME_URL) {
+		console.log('On home page. Waiting for first click or touch...');
+		const activationEvents = ['click', 'touchstart'];
+		activationEvents.forEach(event => {
+			document.addEventListener(event, function onFirstInteraction(e) {
+				startTimer();
+				/* Remove the activation listener after first interaction so startTimer is not called again */
+				document.removeEventListener(event, onFirstInteraction);
+			});
+		});
+	} else {
+		/* On all other pages, start the inactivity timer immediately — the user is already browsing */
+		console.log('Inactivity tracker initialized on ' + window.location.pathname);
+		timerActive = true;
+		resetTimer();
+	}
+
+	/* Resets the inactivity countdown on any meaningful user interaction across all pages */
+	const events = ['mousemove', 'mousedown', 'keydown', 'touchstart', 'scroll', 'click'];
+	events.forEach(event => {
+		document.addEventListener(event, (e) => {
+			if (!timerActive) return;
+			console.log('Interaction detected: [' + e.type + ']. Restarting timer.');
+			resetTimer();
+		});
+	});
+
+/* Log everything to console to be sure */
+  (function() {
+    const _log = (msg) => console.log(`[fix-blank] ${Date.now()} — ${msg}`);
+/* Check if any links will try to load in a new window or tab */
+    function fixLinks(root) {
+      if (!root) return;
+      let count = 0;
+      if (root.tagName === 'A' && root.target === '_blank') {
+        root.removeAttribute('target'); count++;
+      }
+      root.querySelectorAll && root.querySelectorAll('a[target="_blank"]').forEach(a => {
+        a.removeAttribute('target'); count++;
+      });
+      if (count > 0) _log(`fixed ${count} link(s) via ${root.tagName || 'root'}`);
+      return count;
+    }
+/* Do a sweep and replace found links on the initial load*/
+    ['pushState', 'replaceState'].forEach(method => {
+      const orig = history[method].bind(history);
+      history[method] = function(...args) {
+        _log(`${method} → ${args[2]}`);
+        orig(...args);
+        [200, 600, 1200, 2500].forEach(ms =>
+          setTimeout(() => {
+            const n = document.querySelectorAll('a[target="_blank"]').length;
+            _log(`sweep +${ms}ms after ${method}: found ${n}`);
+            fixLinks(document.body);
+          }, ms)
+        );
+      };
+    });
+/* Keep an observer up, for links that load after the page is served */
+    const blankLinkObserver = new MutationObserver(mutations => {
+      mutations.forEach(m => {
+        m.addedNodes.forEach(n => {
+          if (n.nodeType !== 1) return;
+          const self = n.tagName === 'A' && n.getAttribute('target') === '_blank';
+          const desc = n.querySelectorAll ? n.querySelectorAll('a[target="_blank"]').length : 0;
+          if (self || desc > 0) _log(`observer: added ${n.tagName} with ${desc + (self?1:0)} blank link(s)`);
+          fixLinks(n);
+        });
+        if (m.type === 'attributes' && m.target.tagName === 'A' && m.target.getAttribute('target') === '_blank') {
+          _log(`observer: attribute target=_blank on .${m.target.className}`);
+          m.target.removeAttribute('target');
+        }
+      });
+    });
+
+    blankLinkObserver.observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ['target'] });
+    _log('observer attached to document.body');
+/* If a link is found, log it to the console and replace it */
+    [0, 500, 1500, 3000].forEach(ms =>
+      setTimeout(() => {
+        const n = document.querySelectorAll('a[target="_blank"]').length;
+        _log(`initial sweep +${ms}ms: found ${n}`);
+        fixLinks(document.body);
+      }, ms)
+    );
+  })();
+
+</script>

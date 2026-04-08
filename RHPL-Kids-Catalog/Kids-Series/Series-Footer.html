@@ -1,0 +1,173 @@
+<!-----------------------------------------------------------FOOTER-------------------------------------------------------------------->
+<script src="https://rhpl.org/wp-content/uploads/2023/04/s-hours.js" nomodule defer></script>
+<script src="https://rhpl.org/wp-content/uploads/2023/05/website-search.js" nomodule defer></script>
+<script type="text/javascript">
+  (function() {
+  function addImage() {
+    document.querySelectorAll('.css-10ttq0').forEach(element => {
+      if (!element.querySelector('img[data-injected="true"]')) {
+        const img = document.createElement('img');
+        img.src = 'https://static.wixstatic.com/media/a82311_90c206459ff74afda2cc2aebe383160b~mv2.png';
+        img.alt = 'Image';
+        img.width = '300';
+        img.setAttribute('data-injected', 'true');
+        element.appendChild(img);
+      }
+    });
+  }
+
+  addImage();
+  setInterval(addImage, 2000);
+})();
+//Add more subjects here. Goes by file name (case sensitive)
+function addClickListenerToImage() {
+    const imgBasketball = document.querySelector('img[src*="Basketball"]');
+	const imgBirds = document.querySelector('img[src*="Birds"]');
+	const imgBugs = document.querySelector('img[src*="bugs"]');
+	const imgCats = document.querySelector('img[src*="Cat.png"]');
+	const imgDinosaurs = document.querySelector('img[src*="dinosaurs"]');
+	const imgDogs = document.querySelector('img[src*="Dogs"]');
+	const imgHorses = document.querySelector('img[src*="Horses"]');
+	const imgLions = document.querySelector('img[src*="Lion"]');
+	const imgMonsters = document.querySelector('img[src*="Monsters"]');
+	const imgNumbers = document.querySelector('img[src*="Numbers"]');
+	const imgPandas = document.querySelector('img[src*="Pandas"]');
+	const imgPlanes = document.querySelector('img[src*="Planes"]');
+	const imgPrincesses = document.querySelector('img[src*="Princesses"]');
+	const imgRobots = document.querySelector('img[src*="Robots"]');
+	const imgSpace = document.querySelector('img[src*="Space"]');
+	const imgTrucks = document.querySelector('img[src*="trucks"]');
+	const imgWeather = document.querySelector('img[src*="Weather"]');
+	const imgWinter = document.querySelector('img[src*="Winter"]');
+    const appBookshelf = document.querySelector('div[data-automation-id*="bookshelf-container"]');
+
+    if (appBookshelf) {
+        appBookshelf.style = 'display: none !important';
+    }
+}
+
+const observer = new MutationObserver(function(mutationsList) {
+    // Check for added nodes
+    for (const mutation of mutationsList) {
+        if (mutation.type === 'childList') {
+            addClickListenerToImage();
+        }
+    }
+});
+
+// Start observing the document body for changes
+observer.observe(document.body, { childList: true, subtree: true });
+
+// Also add an initial check in case the image is already present
+addClickListenerToImage();
+
+
+let inactivityTimer;
+let timerActive = false;
+
+const HOME_URL = '/'; // Change this to your specific URL/path
+
+function startTimer() {
+  if (timerActive) return;
+  timerActive = true;
+  console.log('🟢 First interaction detected. Inactivity timer is now active.');
+  resetTimer();
+}
+
+function resetTimer() {
+  clearTimeout(inactivityTimer);
+  console.log('⏱️ Inactivity timer reset. Redirecting in 60 seconds if no interaction...');
+  inactivityTimer = setTimeout(() => {
+    console.log('🏠 No interaction detected for 60 seconds. Redirecting to home page...');
+    window.location.href = HOME_URL;
+  }, 60000);
+}
+
+// On the home page, wait for the first click/touch before starting the timer
+if (window.location.pathname === HOME_URL) {
+  console.log('⏳ On home page. Waiting for first click or touch...');
+  const activationEvents = ['click', 'touchstart'];
+  activationEvents.forEach(event => {
+    document.addEventListener(event, function onFirstInteraction(e) {
+      startTimer();
+      document.removeEventListener(event, onFirstInteraction);
+    });
+  });
+} else {
+  // On all other pages, start the timer immediately
+  console.log(`✅ Inactivity tracker initialized on ${window.location.pathname}.`);
+  timerActive = true;
+  resetTimer();
+}
+
+// Track all interactions on ALL pages, resetting the timer if it's active
+const events = ['mousemove', 'mousedown', 'keydown', 'touchstart', 'scroll', 'click'];
+events.forEach(event => {
+  document.addEventListener(event, (e) => {
+    if (!timerActive) return;
+    console.log(`🖱️ Interaction detected: [${e.type}]. Restarting timer.`);
+    resetTimer();
+  });
+});
+
+/* Log everything to console to be sure */
+  (function() {
+    const _log = (msg) => console.log(`[fix-blank] ${Date.now()} — ${msg}`);
+/* Check if any links will try to load in a new window or tab */
+    function fixLinks(root) {
+      if (!root) return;
+      let count = 0;
+      if (root.tagName === 'A' && root.target === '_blank') {
+        root.removeAttribute('target'); count++;
+      }
+      root.querySelectorAll && root.querySelectorAll('a[target="_blank"]').forEach(a => {
+        a.removeAttribute('target'); count++;
+      });
+      if (count > 0) _log(`fixed ${count} link(s) via ${root.tagName || 'root'}`);
+      return count;
+    }
+/* Do a sweep and replace found links on the initial load*/
+    ['pushState', 'replaceState'].forEach(method => {
+      const orig = history[method].bind(history);
+      history[method] = function(...args) {
+        _log(`${method} → ${args[2]}`);
+        orig(...args);
+        [200, 600, 1200, 2500].forEach(ms =>
+          setTimeout(() => {
+            const n = document.querySelectorAll('a[target="_blank"]').length;
+            _log(`sweep +${ms}ms after ${method}: found ${n}`);
+            fixLinks(document.body);
+          }, ms)
+        );
+      };
+    });
+/* Keep an observer up, for links that load after the page is served */
+    const blankLinkObserver = new MutationObserver(mutations => {
+      mutations.forEach(m => {
+        m.addedNodes.forEach(n => {
+          if (n.nodeType !== 1) return;
+          const self = n.tagName === 'A' && n.getAttribute('target') === '_blank';
+          const desc = n.querySelectorAll ? n.querySelectorAll('a[target="_blank"]').length : 0;
+          if (self || desc > 0) _log(`observer: added ${n.tagName} with ${desc + (self?1:0)} blank link(s)`);
+          fixLinks(n);
+        });
+        if (m.type === 'attributes' && m.target.tagName === 'A' && m.target.getAttribute('target') === '_blank') {
+          _log(`observer: attribute target=_blank on .${m.target.className}`);
+          m.target.removeAttribute('target');
+        }
+      });
+    });
+
+    blankLinkObserver.observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ['target'] });
+    _log('observer attached to document.body');
+/* If a link is found, log it to the console and replace it */
+    [0, 500, 1500, 3000].forEach(ms =>
+      setTimeout(() => {
+        const n = document.querySelectorAll('a[target="_blank"]').length;
+        _log(`initial sweep +${ms}ms: found ${n}`);
+        fixLinks(document.body);
+      }, ms)
+    );
+  })();
+
+</script>

@@ -1,0 +1,278 @@
+<!---This line is needed--->
+<script src="https://rhpl.org/wp-content/uploads/2023/04/s-hours.js" nomodule defer></script>
+<script>
+/*Define regular open hours sunday - saturday*/
+        const normalSchedule = ["1:00pm - 6:00pm","9:00am - 9:00pm","9:00am - 9:00pm","9:00am - 9:00pm",
+            "9:00am - 9:00pm","9:00am - 6:00pm","9:00am - 6:00pm"];
+
+        /*Get dates that the organization is closed or different from normal business hours*/
+        const UnavailableDates = [
+      ["12-30-2024","9:00am-6:00pm"], ["12-31-2024","Closed"], ["1-1-2025","Closed"],
+			["1-17-2025", "9:00am-5:00pm"],
+			["4-20-2025","Closed"],
+			["4-26-2025","9:00am-4:30pm"],
+      ["5-24-2025","Closed"], ["5-25-2025","Closed"], ["5-26-2025","Closed"],
+      ["7-4-2025","Closed"],
+			["8-30-2025","Closed"], ["8-31-2025","Closed"], ["9-1-2025","Closed"],
+			["11-14-2025","Closed"],
+			["11-26-2025","9:00am-6:00pm"],
+			["11-27-2025","Closed"],
+			["12-23-2025","9:00am-6:00pm"], ["12-24-2025","Closed"], ["12-25-2025","Closed"],
+      ["12-30-2025","9:00am-6:00pm"], ["12-31-2025","Closed"], ["1-1-2026","Closed"]
+        ]
+
+        /*Define date variables*/
+        const date = new Date();
+        const month = date.getMonth()+1
+        const year = date.getFullYear()
+        const currentDate = date.getMonth()+1 + "-" + date.getDate() + "-" + date.getFullYear()
+
+        /*Grab normal schedule*/
+        var time = normalSchedule[date.getDay()];
+        document.getElementById("time").innerHTML = time;
+
+        /*Compare normal schedule with unavailable dates*/
+        UnavailableDates.map(function(data, i){
+            if (currentDate == UnavailableDates[i][0]) {
+                document.getElementById("time").innerHTML = UnavailableDates[i][1];
+                if (UnavailableDates[i][1].toLowerCase() == "closed") {
+                    document.getElementById("open").style.display = "none";
+                }
+            }
+        })
+
+				function dropdownSearch() {
+				var dropdownSelection = document.getElementById("search").value;
+					if (dropdownSelection == "catalog") {
+          document.getElementById("searchCatalog").placeholder =
+            "Search Catalog...";
+				} else if (dropdownSelection == "website") {
+          document.getElementById("searchCatalog").placeholder =
+            "Search Website...";
+			} else if (dropdownSelection == "events") {
+          document.getElementById("searchCatalog").placeholder =
+            "Search Events...";
+			}
+			return false;
+		}
+      function Search() {
+        var dropdownSelection = document.getElementById("search").value;
+        if (dropdownSelection == "catalog") {
+          var form = document.getElementById("searchForm");
+          var input = document.getElementById("searchCatalog").value;
+		  var inputname = document.getElementById("searchCatalog").name;
+		  var page = "";
+		  if (input === "") {
+		  form.action = "https://rhpl.na3.iiivega.com/";
+		  inputname = "";
+		  window.location = "https://rhpl.na3.iiivega.com/";
+		  return false;
+		  } else if (input !== "") {
+		  form.action = "https://rhpl.na3.iiivega.com/search";
+		  inputname = "query";
+		  }
+		  form.action = "https://rhpl.na3.iiivega.com/search";
+          form.onsubmit = function () {
+            return false;
+          };
+        } else if (dropdownSelection == "website") {
+          var form = document.getElementById("searchForm");
+          var input = document.getElementById("searchCatalog");
+          form.setAttribute("target", "");
+          form.action = "https://rhpl.org/";
+          input.name = "s";
+          form.onsubmit = function () {
+            var form = this,
+              domain = form.action,
+              searchtext = form.elements.keyword.value;
+            location.href = domain + "?s=" + searchtext;
+            return false;
+          };
+        } else if (dropdownSelection == "events") {
+          var form = document.getElementById("searchForm");
+          var input = document.getElementById("searchCatalog");
+          form.setAttribute("target", "");
+
+          form.action = "https://rhpl.org/program-calendar/#/events/";
+          input.name = "keyword";
+          form.onsubmit = function () {
+            var form = this,
+              domain = form.action,
+              searchtext = form.elements.keyword.value;
+			  location.href = domain + "?keyword=" + searchtext;
+            return false;
+          };
+        }
+      }
+
+  //Add more subjects here. Goes by file name (case sensitive)
+const imageLinks = [
+  { src: 'WQ2r4',      url: 'https://mbiic-rhpl.na3.iiivega.com/search?query=*&searchType=everything&pageSize=40&locationIds=15&pageNum=0&materialTypeIds=23' },
+  { src: 'ArtsCrafts', url: 'https://mbiic-rhpl.na3.iiivega.com/search?query=*&searchType=everything&pageSize=40&locationIds=15&pageNum=0&materialTypeIds=23&collectionIds=130' },
+  { src: 'Electronics', url: 'https://mbiic-rhpl.na3.iiivega.com/search?query=*&searchType=everything&pageSize=40&locationIds=15&pageNum=0&materialTypeIds=23&collectionIds=131' },
+  { src: 'Experiences', url: 'https://mbiic-rhpl.na3.iiivega.com/search?query=*&searchType=everything&pageSize=40&locationIds=15&pageNum=0&materialTypeIds=23&collectionIds=132' },
+  { src: 'Household',  url: 'https://mbiic-rhpl.na3.iiivega.com/search?query=*&searchType=everything&pageSize=40&locationIds=15&pageNum=0&materialTypeIds=23&collectionIds=134' },
+  { src: 'Tools',      url: 'https://mbiic-rhpl.na3.iiivega.com/search?query=*&searchType=everything&pageSize=40&locationIds=15&pageNum=0&materialTypeIds=23&collectionIds=137' },
+  { src: 'Music',      url: 'https://mbiic-rhpl.na3.iiivega.com/search?query=*&searchType=everything&pageSize=40&locationIds=15&pageNum=0&materialTypeIds=23&collectionIds=135' },
+  { src: 'ngHdl',      url: 'https://mbiic-rhpl.na3.iiivega.com/search?query=*&searchType=everything&pageSize=40&locationIds=15&pageNum=0&materialTypeIds=23&collectionIds=136' }
+];
+
+function addClickListenerToImage() {
+  let allBound = true;
+
+  imageLinks.forEach(function({ src, url }) {
+    const img = document.querySelector('img[src*="' + src + '"]:not([data-click-bound])');
+
+    if (img) {
+      img.setAttribute('data-click-bound', 'true');
+      img.addEventListener('click', function() {
+        setTimeout(function() {
+          window.location.href = url;
+        }, 100);
+      });
+      console.log('Listener bound for: ' + src);
+    } else if (!document.querySelector('img[src*="' + src + '"]')) {
+      // Image not in DOM yet
+      allBound = false;
+    }
+  });
+
+  if (allBound) {
+    clearInterval(poller);
+    observer.disconnect();
+    console.log('All listeners bound');
+  }
+}
+
+const poller = setInterval(addClickListenerToImage, 500);
+
+const observer = new MutationObserver(function() {
+  addClickListenerToImage();
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+  addClickListenerToImage();
+  observer.observe(document.body, {
+    childList: true,
+    subtree: true,
+    attributes: true,
+    attributeFilter: ['src']
+  });
+});
+
+	let inactivityTimer;
+	let timerActive = false;
+
+	/* Change this to your specific URL/path */
+	const HOME_URL = '/';
+
+	/* Activates the inactivity timer on the first user interaction — only fires once per page load */
+	function startTimer() {
+		if (timerActive) return;
+		timerActive = true;
+		console.log('First interaction detected. Inactivity timer is now active.');
+		resetTimer();
+	}
+
+	/* Clears and restarts the 60-second countdown.
+	   If no interaction occurs within 60 seconds, the kiosk automatically redirects to the home page. */
+	function resetTimer() {
+		clearTimeout(inactivityTimer);
+		//console.log('Inactivity timer reset. Redirecting in 60 seconds if no interaction...');
+		inactivityTimer = setTimeout(() => {
+			//console.log('No interaction detected for 60 seconds. Redirecting to home page...');
+			window.location.href = HOME_URL;
+		}, 60000);
+	}
+
+	/* On the home page, the timer only activates after the first touch or click.
+	   This prevents an idle kiosk from immediately bouncing back to home before anyone has interacted with it. */
+	if (window.location.pathname === HOME_URL) {
+		console.log('On home page. Waiting for first click or touch...');
+		const activationEvents = ['click', 'touchstart'];
+		activationEvents.forEach(event => {
+			document.addEventListener(event, function onFirstInteraction(e) {
+				startTimer();
+				/* Remove the activation listener after first interaction so startTimer is not called again */
+				document.removeEventListener(event, onFirstInteraction);
+			});
+		});
+	} else {
+		/* On all other pages, start the inactivity timer immediately — the user is already browsing */
+		console.log('Inactivity tracker initialized on ' + window.location.pathname);
+		timerActive = true;
+		resetTimer();
+	}
+
+	/* Resets the inactivity countdown on any meaningful user interaction across all pages */
+	const events = ['mousemove', 'mousedown', 'keydown', 'touchstart', 'scroll', 'click'];
+	events.forEach(event => {
+		document.addEventListener(event, (e) => {
+			if (!timerActive) return;
+			console.log('Interaction detected: [' + e.type + ']. Restarting timer.');
+			resetTimer();
+		});
+	});
+
+
+
+  (function() {
+    const _log = (msg) => console.log(`[fix-blank] ${Date.now()} — ${msg}`);
+
+    function fixLinks(root) {
+      if (!root) return;
+      let count = 0;
+      if (root.tagName === 'A' && root.target === '_blank') {
+        root.removeAttribute('target'); count++;
+      }
+      root.querySelectorAll && root.querySelectorAll('a[target="_blank"]').forEach(a => {
+        a.removeAttribute('target'); count++;
+      });
+      if (count > 0) _log(`fixed ${count} link(s) via ${root.tagName || 'root'}`);
+      return count;
+    }
+
+    ['pushState', 'replaceState'].forEach(method => {
+      const orig = history[method].bind(history);
+      history[method] = function(...args) {
+        _log(`${method} → ${args[2]}`);
+        orig(...args);
+        [200, 600, 1200, 2500].forEach(ms =>
+          setTimeout(() => {
+            const n = document.querySelectorAll('a[target="_blank"]').length;
+            _log(`sweep +${ms}ms after ${method}: found ${n}`);
+            fixLinks(document.body);
+          }, ms)
+        );
+      };
+    });
+
+    const blankLinkObserver = new MutationObserver(mutations => {
+      mutations.forEach(m => {
+        m.addedNodes.forEach(n => {
+          if (n.nodeType !== 1) return;
+          const self = n.tagName === 'A' && n.getAttribute('target') === '_blank';
+          const desc = n.querySelectorAll ? n.querySelectorAll('a[target="_blank"]').length : 0;
+          if (self || desc > 0) _log(`observer: added ${n.tagName} with ${desc + (self?1:0)} blank link(s)`);
+          fixLinks(n);
+        });
+        if (m.type === 'attributes' && m.target.tagName === 'A' && m.target.getAttribute('target') === '_blank') {
+          _log(`observer: attribute target=_blank on .${m.target.className}`);
+          m.target.removeAttribute('target');
+        }
+      });
+    });
+
+    blankLinkObserver.observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ['target'] });
+    _log('observer attached to document.body');
+
+    [0, 500, 1500, 3000].forEach(ms =>
+      setTimeout(() => {
+        const n = document.querySelectorAll('a[target="_blank"]').length;
+        _log(`initial sweep +${ms}ms: found ${n}`);
+        fixLinks(document.body);
+      }, ms)
+    );
+  })();
+
+</script>

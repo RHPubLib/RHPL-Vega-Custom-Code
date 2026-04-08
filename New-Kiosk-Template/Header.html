@@ -1,0 +1,187 @@
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+
+<style>
+	@import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
+	@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+
+	/* Hides the Bootstrap fixed-bottom bar (likely a persistent footer/nav Vega injects at the bottom of the viewport) */
+	.fixed-bottom {
+		display: none;
+	}
+
+	/* Remove Login Panel */
+	/* Hides the user account/login panel — kiosk users should not be able to log in or access account settings */
+	#user-panel {
+		display: none;
+	}
+
+	/* Pulls a Vega-generated layout component upward to reduce excess vertical spacing on the page */
+	.css-vmk2hm {
+		margin-top: -20px;
+	}
+
+	/* Scales down images to 80% due to images being too large  */
+	.css-4k03bg {
+		transform: scale(0.8);
+	}
+
+	/* Removes Bootstrap's default max-width cap so full-width containers span the entire viewport */
+	.container-fluid {
+		max-width: unset !important;
+	}
+
+	/* Re-applies a max-width of 1600px specifically to the main content area to prevent overly wide layouts on large screens */
+	.content-container.container-fluid {
+		max-width: 1600px !important;
+	}
+
+	/* Hides the OneTrust cookie consent dark overlay/backdrop that appears behind the consent popup */
+	body [class*='onetrust-pc-dark-filter'] {
+		display: none;
+	}
+
+	/* Hide "I forgot my passcode" link */
+	/* Removes the passcode recovery link — kiosk users should not have access to account recovery options */
+	a[data-automation-id=login-forgot-my-passcode-link] {
+		display: none !important;
+	}
+
+	/* Adds bottom padding to the main content area so content is not hidden  */
+	.px-0 main {
+		padding-bottom: 10vh !important;
+	}
+
+	/* Forces the page background to white, overriding any Vega default gray or colored backgrounds */
+	body {
+		background-color: #ffffff !important;
+	}
+
+	/* Remove title and view all button */
+	/* Hides "View All" / "View More" buttons — the kiosk browse experience should stay on the current filtered page */
+	button[data-automation-id=btn-view-more] {
+		display: none;
+	}
+
+	/* Removes margins from a specific Material UI box component used in the Vega homepage layout */
+	.MuiBox-root.css-1cp342c {
+		margin: 0 !important;
+	}
+
+	/* Sets a small responsive bottom padding on the Swiper carousel used for featured content sliders */
+	.swiper {
+		--padding-bottom: calc(5px + 1%);
+	}
+
+	/* Slightly scales up a Vega card/component by 1% — likely a subtle zoom on a featured homepage element */
+	.css-1kjo2vf {
+		transform: scale(1.01);
+	}
+
+	/* Background white */
+	/* Forces the navigation menu background to white to match the overall page background */
+	#menu-id {
+		background-color: white;
+	}
+
+	/* Removes a minimum height constraint from a Vega layout component, allowing it to collapse to its content height */
+	div.css-kk1jzg {
+		min-height: unset !important;
+	}
+
+	/* Sets the base body font size and collapses line-height to 1 to tighten up Vega's default spacing */
+	body {
+		font-size: 1em;
+		line-height: 1;
+	}
+
+	/* Removes Vega's default letter-spacing on h3 headings for a cleaner typographic appearance */
+	h3 {
+		letter-spacing: unset;
+	}
+
+	/* Set your font here. Add !important to override Vega's default font. */
+	html * {
+		font-family: "Lato", 'Lato Semibold', icomoon, 'Font Awesome 5 Free', sans-serif !important;
+	}
+
+	/* Set the base (rem) font size */
+	/* Pins the root font size to 16px so all rem/em units across the page calculate from a known baseline */
+	html {
+		font-size: 16px !important;
+	}
+
+	/* Base font for Vega */
+	/* Overrides Angular Material's typography component to use Lato instead of its default font stack */
+	.mat-typography {
+		font: "Lato", sans-serif !important;
+	}
+
+	/* Remove the global header forced by Vega even when using a premium custom header */
+	/* Hides the second app-global-nav Vega injects into the header — prevents a duplicate navigation bar appearing */
+	.header>app-global-nav:nth-child(2) {
+		display: none;
+	}
+	
+	/* Adds icons to back and home buttons */
+	.Nav-item::after {
+		content: "\f078";
+		font-family: "Font Awesome 6 Pro";
+		font-size: 11px;
+		top: -2px;
+		position: relative;
+		margin-top: auto;
+		margin-bottom: auto;
+		padding: 0px 6px;
+		transition: transform .35s ease-in-out;
+	}
+
+	/* Positions a fixed "Back" button in the lower-left of the screen for kiosk touch navigation */
+	#b-back {
+		position: fixed;
+		top: calc(100vh - 130px);
+		left: 50px;
+		background-color: #6f263d;
+		padding: 10px;
+		color: white;
+		border-radius: 30px;
+		font-size: 22px;
+		font-weight: bold;
+		z-index: 999999;
+		transform: scale(1.5);
+	}
+
+	/* Styles the anchor tag inside the back button — removes underline and keeps text white */
+	#b-back a {
+		color: white;
+		text-decoration: none;
+	}
+
+	/* Positions a fixed "Home" button just above the back button in the lower-left for kiosk navigation */
+	#b-home {
+		position: fixed;
+		top: calc(100vh - 200px);
+		left: 50px;
+		background-color: #6f263d;
+		padding: 10px;
+		color: white;
+		border-radius: 30px;
+		font-size: 22px;
+		font-weight: bold;
+		z-index: 999999;
+		transform: scale(1.5);
+	}
+
+	/* Styles the anchor tag inside the home button — removes underline and keeps text white */
+	#b-home a {
+		color: white;
+		text-decoration: none;
+	}
+</style>
+
+<div id="b-back">
+	<a href="javascript:window.history.back();"><i class="fa-solid fa-backward" style="color: #ffffff; font-style: inherit;"></i> Back</a>
+</div>
+
+<div id="b-home">
+	<a href="/"><i class="fa-solid fa-home" style="color: #ffffff; font-style: inherit;"></i> Home</a>
+</div>
