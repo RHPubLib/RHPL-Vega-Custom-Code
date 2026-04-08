@@ -1,5 +1,3 @@
-<!--<script src="https://rhpl.org/wp-content/uploads/2023/04/s-hours.js" nomodule defer></script>-->
-<script src="https://rhpl.org/wp-content/uploads/2023/05/website-search.js" nomodule defer></script>
 <script>
 /*Define regular open hours sunday - saturday*/
         const normalSchedule = ["1:00pm-6:00pm","9:00am-9:00pm","9:00am-9:00pm","9:00am-9:00pm",
@@ -64,15 +62,15 @@
 		  var inputname = document.getElementById("searchCatalog").name;
 		  var page = "";
 		  if (input === "") {
-		  form.action = "https://rhpl.na3.iiivega.com/";
+		  form.action = "https://discover.rhpl.org/";
 		  inputname = "";
-		  window.location = "https://rhpl.na3.iiivega.com/";
+		  window.location = "https://discover.rhpl.org/";
 		  return false;
 		  } else if (input !== "") {
-		  form.action = "https://rhpl.na3.iiivega.com/search";
+		  form.action = "https://discover.rhpl.org/search";
 		  inputname = "query";
 		  }
-		  form.action = "https://rhpl.na3.iiivega.com/search";
+		  form.action = "https://discover.rhpl.org/search";
           form.onsubmit = function () {
             return false;
           };
@@ -80,13 +78,13 @@
           var form = document.getElementById("searchForm");
           var input = document.getElementById("searchCatalog");
           form.setAttribute("target", "");
-          form.action = "https://rhpl.org/";
-          input.name = "s";
+          form.action = "https://www.rhpl.org/search";
+          input.name = "q";
           form.onsubmit = function () {
             var form = this,
               domain = form.action,
               searchtext = form.elements.keyword.value;
-            location.href = domain + "?s=" + searchtext;
+            location.href = domain + "?q=" + searchtext;
             return false;
           };
         } else if (dropdownSelection == "events") {
@@ -94,7 +92,7 @@
           var input = document.getElementById("searchCatalog");
           form.setAttribute("target", "");
 
-          form.action = "https://rhpl.org/program-calendar/#/events/";
+          form.action = "https://events.getlocalhop.com/rochester-hills-public-library/organization/IVF3VpXT3c/#/events/?view=month&";
           input.name = "keyword";
           form.onsubmit = function () {
             var form = this,
