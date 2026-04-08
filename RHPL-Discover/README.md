@@ -15,7 +15,6 @@ patterns used across all properties.
 
 ### Header (`Header.html`)
 
-- **Google Analytics**: GA4 tag `G-2RQ16BP2T1`
 - **Typography**: Lato font (all weights) from Google Fonts
 - **Brand color**: RHPL teal `#006980` applied to login button, nav icons, and interactive elements
 - **Account portal**: CSS fixes for payment display and portal layout
